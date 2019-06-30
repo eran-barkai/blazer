@@ -179,7 +179,7 @@ If your database contains sensitive or personal data, check out [Hypershield](ht
 
 If you need to search encrypted data, use [blind indexing](https://github.com/ankane/blind_index).
 
-You can have Blazer transform specific variables with: [master]
+You can have Blazer transform specific variables with:
 
 ```ruby
 Blazer.transform_variable = lambda do |name, value|
@@ -475,9 +475,11 @@ data_sources:
 - [IBM DB2 and Informix](#ibm-db2-and-informix)
 - [MongoDB](#mongodb-1)
 - [MySQL](#mysql-1)
+- [Neo4j](#neo4j-experimental)
 - [Oracle](#oracle)
 - [PostgreSQL](#postgresql-1)
 - [Presto](#presto)
+- [Salesforce](#salesforce-experimental)
 - [Snowflake](#snowflake)
 - [SQLite](#sqlite)
 - [SQL Server](#sql-server)
@@ -595,6 +597,17 @@ data_sources:
     url: mysql2://user:password@hostname:3306/database
 ```
 
+### Neo4j [experimental]
+
+Add [neo4j-core](https://github.com/neo4jrb/neo4j-core) to your Gemfile and set:
+
+```yml
+data_sources:
+  my_source:
+    adapter: neo4j
+    url: http://user:password@hostname:7474
+```
+
 ### Oracle
 
 Use [activerecord-oracle_enhanced-adapter](https://github.com/rsim/oracle-enhanced).
@@ -618,6 +631,29 @@ data_sources:
   my_source:
     url: presto://user@hostname:8080/catalog
 ```
+
+### Salesforce [experimental]
+
+Add [restforce](https://github.com/restforce/restforce) to your Gemfile and set:
+
+```yml
+data_sources:
+  my_source:
+    adapter: salesforce
+```
+
+And set the appropriate environment variables:
+
+```sh
+SALESFORCE_USERNAME="username"
+SALESFORCE_PASSWORD="password"
+SALESFORCE_SECURITY_TOKEN="security token"
+SALESFORCE_CLIENT_ID="client id"
+SALESFORCE_CLIENT_SECRET="client secret"
+SALESFORCE_API_VERSION="41.0"
+```
+
+Supports [SOQL](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm)
 
 ### Snowflake
 
@@ -688,7 +724,7 @@ Have team members who want to learn SQL? Here are a few great, free resources.
 
 ## Useful Tools
 
-For an easy way to group by day, week, month, and more with correct time zones, check out [Groupdate](https://github.com/ankane/groupdate.sql).
+For an easy way to group by day, week, month, and more with correct time zones, check out [Groupdate.sql](https://github.com/ankane/groupdate.sql).
 
 ## Standalone Version
 
